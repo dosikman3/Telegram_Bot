@@ -1,4 +1,4 @@
-from Token import bot
+from Token import Token
 import gspread
 
 
@@ -7,11 +7,11 @@ class Start:
     def start():
         is_welcome_pinned = False  # Flag to track if the welcome message is already pinned
 
-        @bot.message_handler(commands=['start'])
+        @Token.bot.message_handler(commands=['start'])
         def start(message):
             nonlocal is_welcome_pinned
 
-            gc = gspread.service_account(filename='englishdatabase-388710-017506ff239d.json')
+            gc = gspread.service_account(filename='JSON/englishdatabase-388710-017506ff239d.json')
             sh = gc.open_by_key('1VvsHSJy8D2RllLKWwuhwHPI47KMzxOj622899-_NZmw')
             worksheet = sh.sheet1
 
@@ -42,7 +42,7 @@ Let's start with the Unit 1A Names:
 
 Click on the link to start this section /Unit1A 👈'''
 
-            bot.send_message(message.chat.id, mess, parse_mode='html')
+            Token.bot.send_message(message.chat.id, mess, parse_mode='html')
 
             # Pin the welcome message if not pinned already
             if not is_welcome_pinned:
@@ -51,7 +51,7 @@ To view a list of all lessons, click /Lessons
 
 And to view a list of all tests, click /Test
 '''
-                pinned_message_id = bot.send_message(message.chat.id, pinned_message).message_id
+                pinned_message_id = Token.bot.send_message(message.chat.id, pinned_message).message_id
                 bot.pin_chat_message(message.chat.id, pinned_message_id)
                 is_welcome_pinned = True
 

@@ -1,6 +1,6 @@
 from telebot import types
-from Token import bot
-from Unit5A import Unit5A
+from Token import Token
+from Unit5 import Unit5A
 import time
 import gspread
 
@@ -8,7 +8,7 @@ import gspread
 class Unit4B:
     @staticmethod
     def unit4b():
-        @bot.message_handler(func=lambda
+        @Token.bot.message_handler(func=lambda
                 message: message.text == '📚 Unit 4B' or message.text == '/Unit4B')
         def website(message):
             markup = types.InlineKeyboardMarkup()
@@ -90,40 +90,40 @@ about stacking shelves or being at the checkout is that you have lots
 of opportunities to talk to people. That’s what i liked best.
 """
 
-            bot.send_message(message.chat.id, mess_1, reply_markup=markup, parse_mode='html')
+            Token.bot.send_message(message.chat.id, mess_1, reply_markup=markup, parse_mode='html')
             time.sleep(0.5)
-            bot.send_message(message.chat.id, hm_1, parse_mode='html')
+            Token.bot.send_message(message.chat.id, hm_1, parse_mode='html')
             time.sleep(0.5)
-            bot.send_message(message.chat.id,
-                             'Next Unit '
+            Token.bot.send_message(message.chat.id,
+                             'Next Unit3 '
                              '\nPress\n/Unit5A'
                              '\n/Unit4B_Test')
             time.sleep(0.5)
 
 
-@bot.message_handler(func=lambda message: message.text == '📝 Unit 4B Test' or message.text == '/Unit4B_Test')
+@Token.bot.message_handler(func=lambda message: message.text == '📝 Unit3 4B Test' or message.text == '/Unit4B_Test')
 def test(inner_message):
     score = 0
     chat_id = inner_message.chat.id
-    bot.send_message(chat_id=chat_id,
+    Token.bot.send_message(chat_id=chat_id,
                      text="1.I enjoy _____ books in my free time."
                           "\n1)read."
                           "\n2)reading."
                           "\n3)to read.")
 
-    bot.register_next_step_handler(inner_message, lambda msg: check_answer1(msg, score))
+    Token.bot.register_next_step_handler(inner_message, lambda msg: check_answer1(msg, score))
 
 
 def check_answer1(inner_message, score):
     answer = inner_message.text.lower()
     if answer == "2":
-        bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
         score += 1
     else:
-        bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
 
-    bot.register_next_step_handler(inner_message, lambda msg: check_answer2(msg, score))
-    bot.send_message(chat_id=inner_message.chat.id,
+    Token.bot.register_next_step_handler(inner_message, lambda msg: check_answer2(msg, score))
+    Token.bot.send_message(chat_id=inner_message.chat.id,
                      text="2.She promised _____ me later."
                           "\n1)call"
                           "\n2)calling"
@@ -133,13 +133,13 @@ def check_answer1(inner_message, score):
 def check_answer2(inner_message, score):
     answer = inner_message.text.lower()
     if answer == "3":
-        bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
         score += 1
     else:
-        bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
 
-    bot.register_next_step_handler(inner_message, lambda msg: check_answer3(msg, score))
-    bot.send_message(chat_id=inner_message.chat.id,
+    Token.bot.register_next_step_handler(inner_message, lambda msg: check_answer3(msg, score))
+    Token.bot.send_message(chat_id=inner_message.chat.id,
                      text="3.We need _____ the car before the trip."
                           "\n1)wash"
                           "\n2)washing"
@@ -149,13 +149,13 @@ def check_answer2(inner_message, score):
 def check_answer3(inner_message, score):
     answer = inner_message.text.lower()
     if answer == "3":
-        bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
         score += 1
     else:
-        bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
 
-    bot.register_next_step_handler(inner_message, lambda msg: check_answer4(msg, score))
-    bot.send_message(chat_id=inner_message.chat.id,
+    Token.bot.register_next_step_handler(inner_message, lambda msg: check_answer4(msg, score))
+    Token.bot.send_message(chat_id=inner_message.chat.id,
                      text="4.They can't afford _____ on vacation this year."
                           "\n1)go"
                           "\n2)going"
@@ -165,13 +165,13 @@ def check_answer3(inner_message, score):
 def check_answer4(inner_message, score):
     answer = inner_message.text.lower()
     if answer == "3":
-        bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
         score += 1
     else:
-        bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
 
-    bot.register_next_step_handler(inner_message, lambda msg: check_answer5(msg, score))
-    bot.send_message(chat_id=inner_message.chat.id,
+    Token.bot.register_next_step_handler(inner_message, lambda msg: check_answer5(msg, score))
+    Token.bot.send_message(chat_id=inner_message.chat.id,
                      text="5.He decided _____ Spanish at the language school."
                           "\n1)learn"
                           "\n2)learning"
@@ -181,15 +181,16 @@ def check_answer4(inner_message, score):
 def check_answer5(inner_message, score):
     answer = inner_message.text.lower()
     if answer == "3":
-        bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
         score += 1
     else:
-        bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
 
-    bot.send_message(chat_id=inner_message.chat.id, text="Result: {} из 5".format(score))
-    bot.send_message(chat_id=inner_message.chat.id, text="Mark: {}".format(score))
+    Token.bot.send_message(chat_id=inner_message.chat.id, text="Result: {} из 5".format(score))
+    Token.bot.send_message(chat_id=inner_message.chat.id, text="Mark: {}".format(score))
     user_id = inner_message.from_user.id
-    gc = gspread.service_account(filename='englishdatabase-388710-017506ff239d.json')
+    file_name = 'JSON/englishdatabase-388710-017506ff239d.json'
+    gc = gspread.service_account(file_name)
     sh = gc.open_by_key('1VvsHSJy8D2RllLKWwuhwHPI47KMzxOj622899-_NZmw')
     worksheet = sh.sheet1
     user_ids = worksheet.col_values(1)
@@ -198,13 +199,13 @@ def check_answer5(inner_message, score):
     user_first_name = inner_message.from_user.first_name
     user_last_name = inner_message.from_user.last_name
     if user_last_name:
-        bot.send_message(chat_id=inner_message.chat.id,
+        Token.bot.send_message(chat_id=inner_message.chat.id,
                          text="Rating added for user: {} {}".format(user_first_name, user_last_name))
     else:
-        bot.send_message(chat_id=inner_message.chat.id,
+        Token.bot.send_message(chat_id=inner_message.chat.id,
                          text="Rating added for user: {}".format(user_first_name, ))
-    bot.send_message(inner_message.chat.id,
+    Token.bot.send_message(inner_message.chat.id,
                      text="Next:/Unit5A\nOr:/Unit4B_Test to "
                           "try again")
     if answer == '/Unit5A':
-        bot.register_next_step_handler(inner_message, Unit5A)
+        Token.bot.register_next_step_handler(inner_message, Unit5A)

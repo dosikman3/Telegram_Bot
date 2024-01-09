@@ -1,11 +1,11 @@
-from Token import bot
+from Token import Token
 from telebot import types
 
 
 class Help:
     @staticmethod
     def help():
-        @bot.message_handler(commands=['Lessons'])
+        @Token.bot.message_handler(commands=['Lessons'])
         def button(message):
             markup = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
             Unit1A = types.KeyboardButton('📚 Unit 1A')
@@ -26,4 +26,4 @@ class Help:
 
             markup.add(Unit1A, Unit1B, Unit2A, Unit2B, Unit3A, Unit3B, Practical, Unit4A, Unit4B, Unit5A, Unit5B,
                        Unit6A, Unit6B, Unit7A, Unit7B)
-            bot.send_message(message.chat.id, 'Кнопки на уроки:', reply_markup=markup)
+            Token.bot.send_message(message.chat.id, 'Кнопки на уроки:', reply_markup=markup)

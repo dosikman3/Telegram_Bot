@@ -1,85 +1,85 @@
-from Token import bot
-from Start import Start
-from Unit1A import Unit1A
-from Unit1B import Unit1B
-from Unit2A import Unit2A
-from Unit2B import Unit2B
-from Unit3A import Unit3A
-from Unit3B import Unit3B
-from Practical_English import Practical
-from Unit4A import Unit4A
-from Unit4B import Unit4B
-from Unit5A import Unit5A
-from Unit5B import Unit5B
-from Unit6A import Unit6A
-from Unit6B import Unit6B
-from Unit7A import Unit7A
-from Unit7B import Unit7B
-from Finish import Finish
-from Help import Help
-from Test import Test
+from Token import Token
+from Others import Start
+from Unit1 import Unit1A
+import Unit1.Unit1B
+from Unit2 import Unit2A
+from Unit2 import Unit2B
+from Unit3 import Unit3A
+from Unit3 import Unit3B
+from Practical import Practical_English
+from Unit4 import Unit4A
+from Unit4 import Unit4B
+from Unit5 import Unit5A
+from Unit5 import Unit5B
+from Unit6 import Unit6A
+from Unit6 import Unit6B
+from Unit7 import Unit7A
+from Unit7 import Unit7B
+from Others import Finish
+from Others import Help
+from Others import Test
 
 if __name__ == '__main__':
     while True:
         try:
-            start = Start()
+            start = Start.Start
             start.start()
 
-            unit1A = Unit1A()
+            unit1A = Unit1A.Unit1A
             unit1A.unit1A()
 
-            unit1B = Unit1B()
+            unit1B = Unit1.Unit1B.Unit1B()
             unit1B.unit1b()
 
-            unit2A = Unit2A()
+            unit2A = Unit2A.Unit2A
             unit2A.unit2a()
 
-            unit2B = Unit2B()
+            unit2B = Unit2B.Unit2B
             unit2B.unit2b()
 
-            unit3A = Unit3A()
+            unit3A = Unit3A.Unit3A
             unit3A.unit3a()
 
-            unit3B = Unit3B()
+            unit3B = Unit3B.Unit3B
             unit3B.unit3b()
 
-            practical = Practical()
+            practical = Practical_English.Practical
             practical.practical()
 
-            unit4A = Unit4A()
+            unit4A = Unit4A.Unit4A
             unit4A.unit4a()
 
-            unit4B = Unit4B()
+            unit4B = Unit4B.Unit4B
             unit4B.unit4b()
 
-            unit5A = Unit5A()
+            unit5A = Unit5A.Unit5A
             unit5A.unit5a()
 
-            unit5B = Unit5B()
+            unit5B = Unit5B.Unit5B
             unit5B.unit5b()
 
-            unit6A = Unit6A()
+            unit6A = Unit6A.Unit6A
             unit6A.unit6a()
 
-            unit6B = Unit6B()
+            unit6B = Unit6B.Unit6B
             unit6B.unit6b()
 
-            unit7A = Unit7A()
+            unit7A = Unit7A.Unit7A
             unit7A.unit7a()
 
-            unit7B = Unit7B()
+            unit7B = Unit7B.Unit7B
             unit7B.unit7b()
 
-            finish = Finish()
+            finish = Finish.Finish
             finish.finish()
 
-            helper = Help()
+            helper = Help.Help
             helper.help()
 
-            tester = Test()
+            tester = Test.Test
             tester.test()
 
-            bot.polling(none_stop=True)
+            Token.bot.polling(none_stop=True)
 
         except Exception as e:
             print(e)

@@ -1,6 +1,6 @@
 from telebot import types
-from Token import bot
-from Finish import Finish
+from Token import Token
+from Others import Finish
 import time
 import gspread
 
@@ -8,12 +8,12 @@ import gspread
 class Unit7B:
     @staticmethod
     def unit7b():
-        @bot.message_handler(func=lambda message: message.text == '📚 Unit 7B' or message.text == '/Unit7B')
+        @Token.bot.message_handler(func=lambda message: message.text == '📚 Unit 7B' or message.text == '/Unit7B')
         def website(message):
             markup = types.InlineKeyboardMarkup()
 
             mess_1 = """
-<b>Unit 7B Shall we go out or stay in</b>
+<b>Unit3 7B Shall we go out or stay in</b>
 """
 
             hm_1 = """
@@ -101,11 +101,11 @@ just staring at screens. It’s a natural thing
 with each other in the real world.
 """
 
-            bot.send_message(message.chat.id, mess_1, reply_markup=markup, parse_mode='html')
+            Token.bot.send_message(message.chat.id, mess_1, reply_markup=markup, parse_mode='html')
             time.sleep(0.5)
-            bot.send_message(message.chat.id, hm_1, parse_mode='html')
+            Token.bot.send_message(message.chat.id, hm_1, parse_mode='html')
             time.sleep(0.5)
-            bot.send_message(message.chat.id,
+            Token.bot.send_message(message.chat.id,
                              'Well done!!!!'
                              'Our wishes: /END'
                              '\nLast Test'
@@ -113,29 +113,29 @@ with each other in the real world.
             time.sleep(0.5)
 
 
-@bot.message_handler(func=lambda message: message.text == '📝 Unit 7B Test' or message.text == '/Unit7B_Test')
+@Token.bot.message_handler(func=lambda message: message.text == '📝 Unit3 7B Test' or message.text == '/Unit7B_Test')
 def test(inner_message):
     score = 0
     chat_id = inner_message.chat.id
-    bot.send_message(chat_id=chat_id,
+    Token.bot.send_message(chat_id=chat_id,
                      text="1.They _____ the meeting off due to bad weather."
                           "\n1)put."
                           "\n2)take."
                           "\n3)call.")
 
-    bot.register_next_step_handler(inner_message, lambda msg: check_answer1(msg, score))
+    Token.bot.register_next_step_handler(inner_message, lambda msg: check_answer1(msg, score))
 
 
 def check_answer1(inner_message, score):
     answer = inner_message.text.lower()
     if answer == "1":
-        bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
         score += 1
     else:
-        bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
 
-    bot.register_next_step_handler(inner_message, lambda msg: check_answer2(msg, score))
-    bot.send_message(chat_id=inner_message.chat.id,
+    Token.bot.register_next_step_handler(inner_message, lambda msg: check_answer2(msg, score))
+    Token.bot.send_message(chat_id=inner_message.chat.id,
                      text="2.I _____ my old clothes away and bought new ones."
                           "\n1)put"
                           "\n2)take"
@@ -145,13 +145,13 @@ def check_answer1(inner_message, score):
 def check_answer2(inner_message, score):
     answer = inner_message.text.lower()
     if answer == "1":
-        bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
         score += 1
     else:
-        bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
 
-    bot.register_next_step_handler(inner_message, lambda msg: check_answer3(msg, score))
-    bot.send_message(chat_id=inner_message.chat.id,
+    Token.bot.register_next_step_handler(inner_message, lambda msg: check_answer3(msg, score))
+    Token.bot.send_message(chat_id=inner_message.chat.id,
                      text="3.She _____ her friend up to invite her to the party."
                           "\n1)put."
                           "\n2)take."
@@ -161,13 +161,13 @@ def check_answer2(inner_message, score):
 def check_answer3(inner_message, score):
     answer = inner_message.text.lower()
     if answer == "3":
-        bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
         score += 1
     else:
-        bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
 
-    bot.register_next_step_handler(inner_message, lambda msg: check_answer4(msg, score))
-    bot.send_message(chat_id=inner_message.chat.id,
+    Token.bot.register_next_step_handler(inner_message, lambda msg: check_answer4(msg, score))
+    Token.bot.send_message(chat_id=inner_message.chat.id,
                      text="4.They _____ the TV on during the entire day."
                           "\n1)put"
                           "\n2)take"
@@ -177,13 +177,13 @@ def check_answer3(inner_message, score):
 def check_answer4(inner_message, score):
     answer = inner_message.text.lower()
     if answer == "3":
-        bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
         score += 1
     else:
-        bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
 
-    bot.register_next_step_handler(inner_message, lambda msg: check_answer5(msg, score))
-    bot.send_message(chat_id=inner_message.chat.id,
+    Token.bot.register_next_step_handler(inner_message, lambda msg: check_answer5(msg, score))
+    Token.bot.send_message(chat_id=inner_message.chat.id,
                      text="5.He _____ his jacket on before going outside."
                           "\n1)put"
                           "\n2)take"
@@ -193,15 +193,16 @@ def check_answer4(inner_message, score):
 def check_answer5(inner_message, score):
     answer = inner_message.text.lower()
     if answer == "1":
-        bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Correct answer!")
         score += 1
     else:
-        bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
+        Token.bot.send_message(chat_id=inner_message.chat.id, text="Incorrect answer.")
 
-    bot.send_message(chat_id=inner_message.chat.id, text="Result: {} из 5".format(score))
-    bot.send_message(chat_id=inner_message.chat.id, text="Mark: {}".format(score))
+    Token.bot.send_message(chat_id=inner_message.chat.id, text="Result: {} из 5".format(score))
+    Token.bot.send_message(chat_id=inner_message.chat.id, text="Mark: {}".format(score))
     user_id = inner_message.from_user.id
-    gc = gspread.service_account(filename='englishdatabase-388710-017506ff239d.json')
+    file_name = 'JSON/englishdatabase-388710-017506ff239d.json'
+    gc = gspread.service_account(file_name)
     sh = gc.open_by_key('1VvsHSJy8D2RllLKWwuhwHPI47KMzxOj622899-_NZmw')
     worksheet = sh.sheet1
     user_ids = worksheet.col_values(1)
@@ -215,15 +216,15 @@ def check_answer5(inner_message, score):
     user_first_name = inner_message.from_user.first_name
     user_last_name = inner_message.from_user.last_name
     if user_last_name:
-        bot.send_message(chat_id=inner_message.chat.id,
+        Token.bot.send_message(chat_id=inner_message.chat.id,
                          text="Rating added for user: {} {}".format(user_first_name, user_last_name))
     else:
-        bot.send_message(chat_id=inner_message.chat.id,
+        Token.bot.send_message(chat_id=inner_message.chat.id,
                          text="Rating added for user: {}".format(user_first_name, ))
     cell_19_value = worksheet.cell(row_index, 19).value
-    bot.send_message(inner_message.chat.id,
+    Token.bot.send_message(inner_message.chat.id,
                      text=f"Congratulations on your final grade.:{cell_19_value},"
                           f"\nOur wishes: /END\nOr:/Unit7B_Test to "
                           "try again")
     if answer == '/END':
-        bot.register_next_step_handler(inner_message, Finish)
+        Token.bot.register_next_step_handler(inner_message, Finish)

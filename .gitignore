@@ -2,7 +2,7 @@
 __pycache__/
 *.py[cod]
 *$py.class
-englishdatabase-388710-017506ff239d.json
+JSON/englishdatabase-388710-017506ff239d.json
 
 # C extensions
 *.so
@@ -37,7 +37,7 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 
-# Unit test / coverage reports
+# Unit3 test / coverage reports
 htmlcov/
 .tox/
 .nox/
